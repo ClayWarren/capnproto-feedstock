@@ -1,7 +1,7 @@
 schema_version: 1
 
 context:
-  version: "1.4.0"
+  version: "1.5.0"
 
 package:
   name: capnproto
@@ -9,7 +9,7 @@ package:
 
 source:
   url: https://github.com/capnproto/capnproto/archive/v${{ version }}.tar.gz
-  sha256: d14a9149b79c055fee9d5aa778defe8e8cee0d2a11f0729865cd30dcc345eef2
+  sha256: d5ebdf858e9885c33d4b3f765006d68bd66e9b002bf4d607ff4317ef9c1aac6a
   patches:
     # MSVC miscompiles async.c++ file when /O2 is given
     - fix-msvc.diff
