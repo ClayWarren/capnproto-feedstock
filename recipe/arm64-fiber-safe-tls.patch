@@ -1,0 +1,9 @@
+--- a/c++/src/kj/CMakeLists.txt
++++ b/c++/src/kj/CMakeLists.txt
+@@ -156,2 +156,6 @@
+   target_link_libraries(kj-async PUBLIC kj)
++  if(MSVC AND CMAKE_SYSTEM_PROCESSOR MATCHES "^(ARM64|arm64|aarch64)$")
++    # Fibers can resume on a different thread. Do not cache TLS addresses.
++    target_compile_options(kj-async PUBLIC /GT)
++  endif()
+   if(WITH_FIBERS)
