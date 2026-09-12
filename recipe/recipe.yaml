@@ -13,6 +13,8 @@ source:
   patches:
     # MSVC miscompiles async.c++ file when /O2 is given
     - fix-msvc.diff
+    - if: win and arm64
+      then: arm64-fiber-safe-tls.patch
 
 build:
   number: 1
