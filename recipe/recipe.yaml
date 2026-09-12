@@ -93,6 +93,8 @@ tests:
         run:
           - ${{ compiler('cxx') }}
           - cmake
+          - zlib
+          - openssl
       files:
         recipe:
           - consumer
