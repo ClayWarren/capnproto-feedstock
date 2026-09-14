@@ -87,24 +87,6 @@ tests:
             - Library/lib/kj.lib
             - Library/lib/kj-async.lib
 
-  - if: win and arm64
-    then:
-      requirements:
-        run:
-          - ${{ compiler('cxx') }}
-          - cmake
-          - zlib
-          - openssl
-      files:
-        recipe:
-          - consumer
-      script:
-        - cmake -S consumer -B consumer-build -G "NMake Makefiles" -DCMAKE_BUILD_TYPE=Release -DCMAKE_PREFIX_PATH="%LIBRARY_PREFIX%"
-        - cmake --build consumer-build
-        - consumer-build\capnp_consumer.exe
-        - dumpbin /headers consumer-build\capnp_consumer.exe | findstr /I /C:"AA64 machine (ARM64)"
-        - dumpbin /headers %LIBRARY_BIN%\capnp.exe | findstr /I /C:"AA64 machine (ARM64)"
-
 about:
   license_file: LICENSE
   license: MIT

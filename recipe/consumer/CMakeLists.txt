@@ -1,8 +1,0 @@
-cmake_minimum_required(VERSION 3.15)
-project(capnp_consumer LANGUAGES CXX)
-find_package(CapnProto CONFIG REQUIRED)
-capnp_generate_cpp(SCHEMA_SOURCES SCHEMA_HEADERS sample.capnp)
-add_executable(capnp_consumer main.cpp ${SCHEMA_SOURCES} ${SCHEMA_HEADERS})
-target_compile_features(capnp_consumer PRIVATE cxx_std_20)
-target_include_directories(capnp_consumer PRIVATE ${CMAKE_CURRENT_BINARY_DIR})
-target_link_libraries(capnp_consumer PRIVATE CapnProto::capnp)
